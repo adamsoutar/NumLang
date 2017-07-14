@@ -43,3 +43,27 @@ Execute Script Path > 'gitHubDemo.nl'
 someoutput
 result:7
 ```
+## NumLang Embedded
+
+NumLang is ridiculously easy to implement in Python, with more language support coming in the future.
+
+For example, this is the actual script required for a working NumLang interpreter in Python:
+```
+import NumLang
+while True:
+    NumLang.processCommand(input('NumLang > '))
+```
+That's it! Three lines.
+
+With this power, you can create Python scripts which perform complex NumLang operations, returning the results to Python. For example, say you want to perform a complex maths operation. Instead of creating a Python subroutine, try this:
+Place your maths operation into `operation.nl`, then try this:
+
+(Python Script - Not NumLang)
+```
+import NumLang
+NumLang.pbExpandMemory('3')
+NumLang.pbMemory[0] = 21
+NumLang.pbMemory[1] = 46
+NumLang.processCommand('module operation.nl')
+print('Output: ' + str(NumLang.pbMemory[2]))
+```
