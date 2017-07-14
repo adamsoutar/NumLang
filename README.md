@@ -1,3 +1,4 @@
+![NumLang Logo](http://overflo.me/numlang/NLLogo.png)
 # NumLang
 A basic number-handling memory-based programming language using an interpreter written in Python. 
 
