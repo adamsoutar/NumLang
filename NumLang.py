@@ -59,6 +59,12 @@ def pbDumpMem(args):
     writeToDebug("Selector value:")
     writeToDebug(pbSelector)
 
+#Show help file
+def pbShowHelp(helpArgs):
+    nLS = open('NumLangHelp.txt', 'r')
+    writeToDebug(nLS.read())
+    nLS.close()
+
 #Explicitly sets a memory address
 def pbMemSet(memArgs):
     memArray = memArgs.split(midSplitChar)
@@ -116,7 +122,7 @@ def processCommand(commandIn):
         #Split to get commands
         cmdSplit = commandIn.split(splitChar)
         cmdDo = cmdSplit[0]
-        commandDictionary = {'bump' : pbBump, 'bumpdown' : pbBumpDown, 'expand' : pbExpandMemory, 'dump' : pbDumpMem, 'copyfrom' : pbCopyFrom, 'memset' : pbMemSet, 'copyto' : pbCopyTo, 'add' : pbAdd, 'subtract' : pbSubtract, 'out' : pbOutput, 'setsilent' : pbSetSilent}
+        commandDictionary = {'bump' : pbBump, 'bumpdown' : pbBumpDown, 'expand' : pbExpandMemory, 'dump' : pbDumpMem, 'copyfrom' : pbCopyFrom, 'memset' : pbMemSet, 'copyto' : pbCopyTo, 'add' : pbAdd, 'subtract' : pbSubtract, 'out' : pbOutput, 'setsilent' : pbSetSilent, 'help' : pbShowHelp}
         #Execute command with or without arguments
         if (len(cmdSplit) > 1):
             commandDictionary[cmdDo] (cmdSplit[1])

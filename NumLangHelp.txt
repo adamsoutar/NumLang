@@ -1,0 +1,54 @@
+NumLang - Number Language
+By Adam Soutar
+
+COMMANDS:
+=============================
+help; - Displays this document
+expand X; - Expands the memory array by X ammount of slots
+memset X|Y; - Sets the memory slot X to the value Y
+bump X; - Bumps (adds 1 to) slot X
+bumpdown X; - Subtracts one from slot X
+copyfrom X; - Copies the value from slot X to the 'Selector' a temporary cache
+copyto X; - Copies the selector value to slot X;
+add X; - Adds the value from slot X to the selector;
+subtract X; - Subtracts the value of slot X from the selector;
+dump; - Dumps the memory array and selector value to the console
+out X; - Outputs X (print) - Only function in NumLang that supports strings
+module X; - Runs the script X where X is a filename such as 'loop.nl'
+jump X; - Jump is similar to a GOTO, causes the program to 'jump' to line number X
+jumpIfZero X; - Performs a jump to line X only if the selector holds the value of 0
+quit; - Exits a real-time interpreter console
+terminate; - Used to end a script execution, can be JUMPed over.
+
+Example:
+--------
+jump 2;
+terminate;
+jump 0;
+
+Is an infinite loop.
+
+Note:
+-----
+Jump will increase the line reader count, so jumping to line 3 executes line 4 and onward, NOT the line you jumped to.
+
+IN-LINE VALUES
+=============================
+NumLang has some special in-line values you can call at any time within a command.
+Calling one will replace the name of it with its value.
+
+%SELECTOR% - Replaces with the selector value
+%INPUT% - Asks the user for input and then replaces with user's input.
+ (Note %INPUT% has no filter or evaluation, so the user can inject code!)
+
+Example
+--------
+expand 2;
+bump 0;
+copyfrom 0;
+
+After executing these lines,
+memset 1|%SELECTOR%;
+is equal to:
+copyto 1;
+
